@@ -1,171 +1,56 @@
-# قالب بورتفوليو · Portfolio Template
+# SAMA. | GIS & Data Analytics
 
-بورتفوليو من صفحة واحدة، عربي مع دعم RTL وزرّ للتبديل إلى الإنجليزية.
-A one-page portfolio, Arabic with full RTL support and an English toggle.
+Personal portfolio showcasing GIS, spatial analysis and data analytics work.
 
-`React 19` · `Vite` · `Tailwind CSS 4` · `Motion` · `Lenis`
+## Current website — source of truth
 
-**كل النصوص هنا نائبة — ضع بياناتك مكانها وسيصبح الموقع لك.**
-**Everything here is a placeholder — fill in your data and it's yours.**
+**`index.html` is the active, customized portfolio.** It is a standalone HTML/CSS/JavaScript page. It includes the About, Projects, Skills, Certifications and Contact sections, English/Arabic switching, and dark/light themes.
 
----
+The original React template under `src/` (including `src/content.js` and `src/App.jsx`) is **not connected to the active HTML page**. Those files are kept as legacy template source for now. Editing `src/content.js` will **not** update the published SAMA page. Do not deploy it as a separate React application without migrating the completed content first.
 
-# العربية
+**No avatars, fake experience, or invented projects have been added.**
 
-## ١ · ابدأ
+## Current content
 
-اضغط الزرّ الأخضر **Use this template** في أعلى هذه الصفحة، ثم
-**Create a new repository**. حمّل مستودعك الجديد على جهازك ونفّذ:
+- GIS solar-energy suitability study for Al-Ahsa: 51 candidate sites, with actual selection criteria described.
+- Saudi intercity shipping Power BI project is clearly marked *In progress*.
+- Ten certification cards with original supporting files still to be attached.
+- Contact form opens the visitor's own email client via `mailto:`; there is **no EmailJS integration in the active page** and no EmailJS keys are needed.
+- Fonts in the active page are Google Fonts with system fallbacks. The old template's Thmanyah fonts are not required for this page.
+- Original template author attribution must remain visible in the footer, under [LICENSE](LICENSE).
+
+## Pending before final publication
+
+1. Add the user's **approved original final solar GIS map** at `public/assets/solar-map.png`. Do **not** use previous alternate maps or generated placeholders. The map panel is automatically hidden while this file is absent. Vite copies `public/` files to the site root, so it will be available as `/assets/solar-map.png`. If hosting at a repository subpath, adjust asset URLs or configure the Vite base accordingly.
+2. Add and review the ten original certificates. Protect personal IDs before making files publicly accessible; attach download/view links to the certificate cards.
+3. Add the reviewed CV (when ready) and any later finished projects.
+4. Check English/Arabic content, dark/light mode, responsive layout, contact email, link targets and accessibility on desktop and mobile.
+5. Run a production build and verify the deployed site in a real browser. Deployment and live URL are **not confirmed** by the repository contents alone.
+
+## Local development
+
+Requires Node.js compatible with Vite 8.
 
 ```bash
-npm install
+npm ci
 npm run dev
-```
-
-افتح الرابط الذي يظهر في الطرفية — الموقع يعمل الآن بنصوص وصور نائبة.
-
-## ٢ · اجعله لك
-
-| ما تريد تغييره | الملف |
-| --- | --- |
-| كل النصوص: اسمك، بريدك، روابطك، مشاريعك | **`src/content.js`** ← الملف المهم |
-| صورتك، بأربع وضعيات | `public/avatar/` |
-| العنوان في تبويب المتصفّح ومعاينة الرابط | `index.html` |
-
-- في `src/content.js` استبدل **القيم** فقط. **لا تغيّر أسماء المفاتيح** — المكوّنات تقرأ منها.
-- في `public/avatar/` استبدل الملفات الأربعة بصورك، بنفس الأسماء:
-  `point` و `think` و `smile` و `wink`. إن استخدمت صيغة أخرى مثل `.webp`، غيّر
-  الامتدادات في `POSES` داخل `src/components/Avatar.jsx`.
-
-هذا كل شيء. باقي الملفات لا تحتاج إلى لمسها.
-
-## ٣ · اختياري
-
-**الخطوط.** التصميم مبني على خطوط **ثمانية**، ورخصتها تمنع نشر ملفاتها فهي ليست
-في المستودع. حمّلها من [thmanyah.com](https://thmanyah.com) وضعها في
-`public/fonts/` بأسماء: `thmanyah-sans-400/500/700` و `thmanyah-display-300/700`
-و `thmanyah-serif-300` بصيغة `woff2`. بدونها الموقع يعمل ويبدو مرتّباً بخطوط النظام.
-
-**نموذج التواصل.** انسخ `.env.example` إلى `.env` واملأ مفاتيح
-[EmailJS](https://dashboard.emailjs.com) الثلاثة. إن تركتها فارغة فالنموذج لا يفشل:
-يفتح تطبيق البريد لدى الزائر بالرسالة جاهزة.
-
-> ⚠️ **قبل النشر:** هذه المفاتيح تُدمج في ملفات الصفحة ويستطيع أي زائر قراءتها.
-> اذهب إلى لوحة EmailJS وحدّد **allowed domains** لنطاقك وفعّل **rate limit**،
-> وإلا استطاع أي أحد الإرسال عبر قالبك.
-
-## ٤ · انشره
-
-```bash
 npm run build
+npm run preview
 ```
 
-انشر مجلّد `dist/`. على Vercel أو Netlify يكفي ربط المستودع. ضع مفاتيح EmailJS في
-لوحة الاستضافة لا في المستودع، وارفع ملفات الخطوط إلى الاستضافة مباشرة.
+`npm run build` outputs the standalone site to `dist/`, which can be hosted on Vercel, Netlify or another static host. A build command existing in package.json is not proof that the build or public deployment has succeeded; check CI and hosting status.
 
-> **شرط واحد.** القالب مجاني بالكامل، مقابل أن يبقى سطر **«القالب من …»** ورابطه
-> ظاهرين في تذييل موقعك المنشور. ما عدا ذلك — النصوص والصور والألوان — كلّه لك.
-> راجع [LICENSE](LICENSE).
+## Publishing notes
 
-## أربعة أشياء لا تغيّرها
+- For GitHub Pages, configure a suitable publishing workflow that uploads `dist/`; simply serving the repository root is a separate deployment method. Set Vite `base` if deploying to a subpath.
+- Do not commit personal/private documents, API secrets, or non-redistributable font files.
+- If the contact form is later changed to EmailJS, configure allowed domains and rate limits. This is not currently required.
+- Preserve the visible template attribution link to [Aljazy Banaemah](https://github.com/aljazikb) as required by the existing [LICENSE](LICENSE).
 
-ليست أذواقاً — تغييرها يكسر شيئاً حقيقياً:
+## Status
 
-1. **لا تباعد بين الحروف العربية.** الحروف متّصلة، والتباعد يفكّك الكلمة.
-2. **لا خطّ mono مع العربية.** لا يحوي حروفاً عربية، فيستبدله المتصفّح بخطٍّ يكسر الاتصال.
-3. **لا مائل (italic) في العربية.** للتأكيد استخدم خطّ العناوين بالبنفسجي الفاتح.
-4. **ثلاث مجموعات مهارات.** قسم المهارات مبني على شعاعٍ يمسح ثلاثة أعمدة.
+**Portfolio work in progress, not yet verified as publicly deployed.**
 
 ---
 
-# English
-
-## 1 · Start
-
-Click the green **Use this template** button at the top of this page, then
-**Create a new repository**. Clone your new repo and run:
-
-```bash
-npm install
-npm run dev
-```
-
-Open the URL printed in the terminal — the site already runs, with placeholder
-text and placeholder avatars.
-
-## 2 · Make it yours
-
-| What you want to change | File |
-| --- | --- |
-| All text: your name, email, links, projects | **`src/content.js`** ← the one that matters |
-| Your avatar, in four poses | `public/avatar/` |
-| Browser-tab title and link preview | `index.html` |
-
-- In `src/content.js`, replace the **values** only. **Do not rename the keys** —
-  the components read them.
-- In `public/avatar/`, replace the four files with your own, same names:
-  `point`, `think`, `smile`, `wink`. If you use another format such as `.webp`,
-  update the extensions in `POSES` inside `src/components/Avatar.jsx`.
-
-That's it. You don't need to touch anything else.
-
-## 3 · Optional
-
-**Fonts.** The design is built around the **thmanyah** typeface. Its license
-forbids redistributing the files, so they are not in this repo. Download them from
-[thmanyah.com](https://thmanyah.com) into `public/fonts/` as
-`thmanyah-sans-400/500/700`, `thmanyah-display-300/700` and `thmanyah-serif-300`
-in `woff2`. Without them the site still works and still looks tidy, using system fonts.
-
-**Contact form.** Copy `.env.example` to `.env` and fill in the three
-[EmailJS](https://dashboard.emailjs.com) keys. If you leave them empty the form
-doesn't break: it opens the visitor's mail app with the message pre-filled.
-
-> ⚠️ **Before you deploy:** these keys get bundled into the page and any visitor
-> can read them. In your EmailJS dashboard, set **allowed domains** to your own
-> domain and enable a **rate limit** — otherwise anyone can send through your template.
-
-## 4 · Deploy
-
-```bash
-npm run build
-```
-
-Publish the `dist/` folder. On Vercel or Netlify, connecting the repo is enough.
-Put the EmailJS keys in the host's dashboard, never in the repo, and upload the
-font files to the host directly.
-
-> **One condition.** The template is completely free, in exchange for keeping the
-> **"Template by …"** line and its link visible in your published site's footer.
-> Everything else — text, images, colors — is yours. See [LICENSE](LICENSE).
-
-## Four things not to change
-
-These aren't preferences — changing them breaks something real:
-
-1. **No letter-spacing on Arabic.** Arabic letters connect; spacing them apart breaks the word.
-2. **No monospace for Arabic.** It has no Arabic glyphs, so the browser substitutes a font that breaks the joins.
-3. **No italics in Arabic.** Emphasise with the display font in light purple instead.
-4. **Three skill groups.** The skills section is built around a beam sweeping three columns.
-
----
-
-## الأوامر · Commands
-
-| | |
-| --- | --- |
-| `npm run dev` | تشغيل خادم التطوير · start the dev server |
-| `npm run build` | بناء نسخة الإنتاج في `dist/` · production build |
-| `npm run preview` | معاينة نسخة الإنتاج محلياً · preview the build |
-| `npm run lint` | فحص الكود · run Oxlint |
-
-## الرخصة · License
-
-[MIT مع شرط الإشارة إلى المصدر](LICENSE) — استخدمه وعدّله وانشر نسختك بحرّية،
-وأبقِ سطر الإشارة في التذييل.
-[MIT with required attribution](LICENSE) — use it, modify it, publish your version
-freely, and keep the credit line in the footer.
-
-الرخصة تشمل الكود فقط؛ الخطوط لها رخصتها الخاصة وليست جزءاً من المستودع.
-The license covers the code only; the fonts carry their own license and are not
-part of this repository.
+**بالعربية:** النسخة المستخدمة الآن هي `index.html`، وليست قالب React الموجود في `src/`. أضيفت المشاريع والمحتوى الأساسي، لكن الخريطة الأصلية والشهادات وملف السيرة الذاتية وفحص النشر النهائي لم تكتمل بعد. نموذج التواصل يفتح تطبيق البريد ولا يحتاج EmailJS. يجب إبقاء إشارة صاحبة القالب في تذييل الموقع وفق الرخصة.
