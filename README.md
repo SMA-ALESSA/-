@@ -1,51 +1,45 @@
 # SAMA | GIS & Data Analytics
 
-A personal portfolio featuring GIS, spatial analysis, and data analytics projects using ArcMap, Power BI, and Excel.
+A bilingual personal portfolio in Geographic Information Systems, spatial analysis and data analytics, featuring work with ArcMap, Power BI and Excel.
+
+**Live website:** https://sama-data-portfolio.netlify.app/
 
 ## Projects
+- **Solar Energy Site Suitability — Al-Ahsa, Saudi Arabia:** GIS site suitability analysis, with 51 candidate locations identified. The original GIS map can be attached when available.
+- **Saudi Intercity Shipping Analysis:** Power BI analysis of shipments, revenue, cancellations and delays. *In progress.*
 
-**Solar Energy Site Suitability — Al-Ahsa, Saudi Arabia**  
-GIS analysis of vacant land parcels using area, slope, solar irradiation, and road proximity. The final selection includes 51 candidate sites.
+## Website structure
+The published portfolio is a lightweight, standalone site — no React, EmailJS or frontend framework is required:
 
-**Saudi Intercity Shipping Analysis**  
-Power BI project focusing on shipping performance, revenue, cancellations, and delays. *In progress.*
-
-## About the site
-
-The portfolio has five sections: About, Projects, Skills, Certifications, and Contact. It supports Arabic and English, with light and dark themes.
-
-The customized website is in `index.html`. The files under `src/` are from the original React template and are not used by this page. To change portfolio content, edit `index.html`, not `src/content.js`.
-
-The contact form opens the visitor's email application. No EmailJS setup is required.
+- `index.html` — website layout, content, styles and Arabic/English translations.
+- `public/assets/saudi-hero-approved.webp` — approved Saudi Arabia map illustration for the home page.
+- `public/certificates/` — eight **privacy-redacted** PDF certificates. The Excel data analysis and Power BI intermediate certificates remain pending and have no attached files.
+- `public/favicon.svg` — site icon.
+- `scripts/build.mjs` — copies the published site to `dist/`.
+- `scripts/serve.mjs` — local preview server.
+- `netlify.toml` — Netlify build and publish settings.
 
 ## Run locally
+Requires Node.js 22 or later.
 
 ```bash
 npm ci
-npm run dev
-```
-
-For a production build:
-
-```bash
 npm run build
 npm run preview
 ```
 
-The build creates a `dist/` folder. An automatic GitHub Actions workflow checks that the project builds successfully.
+Open http://127.0.0.1:4173 to preview the built site. `npm run dev` builds and starts the same local preview.
 
-## Before publishing
+## Deployment
+Netlify is connected to the `main` branch on GitHub and publishes the output of:
 
-- Add the approved original GIS map at `public/assets/solar-map.png` and confirm the image path in `index.html`.
-- Attach the original certificates after checking for personal details.
-- Add the CV when finalized.
-- Check the site on mobile and desktop, test both languages and themes, and verify all links.
-- Confirm the hosting URL and deployment configuration.
+- Build command: `npm run build`
+- Publish directory: `dist`
 
-## Credits
+GitHub Actions also runs a build check. The contact form opens the visitor's email application; no API keys or external email service are needed.
 
-Original template by [Aljazy Banaemah](https://github.com/aljazikb). The footer credit is retained as required by the [license](LICENSE).
+## Updating the portfolio
+Edit the source in `index.html`, keeping the English and Arabic translations aligned. Put approved public image files in `public/assets/` and privacy-checked certificate PDFs in `public/certificates/`, then link them in `index.html`. Never commit unredacted ID numbers, original certificates containing private details or private contact data. The existing eight public PDF files have already been prepared as privacy-redacted copies.
 
----
-
-**SAMA** — بورتفوليو شخصي لمشاريع نظم المعلومات الجغرافية والتحليل المكاني وتحليل البيانات. الموقع باللغتين العربية والإنجليزية، مع وضعين فاتح وداكن. المشروع الأساسي الحالي لتحليل ملاءمة مواقع الطاقة الشمسية في الأحساء (51 موقعًا)، ومشروع تحليل الشحن بين المدن السعودية قيد العمل.
+## Credits and license
+Original portfolio template by [Aljazy Banaemah](https://github.com/aljazikb). The visible footer credit and the [LICENSE](LICENSE) are retained in accordance with its terms.
